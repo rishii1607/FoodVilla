@@ -16,6 +16,8 @@ body{
     display: flex;
     gap: 20px;
     padding: 30px;
+    flex-wrap: wrap;
+    align-items: start;
 }
 .card {
   display: flex;

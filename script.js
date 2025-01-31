@@ -1,5 +1,3 @@
-
-
 let restaurants = [
   {
     info: {
@@ -731,28 +729,56 @@ let restaurants = [
   },
 ];
 
-document.addEventListener("DOMContentLoaded", function () {
 
+let modelCategory = document.getElementById("category");
+const containerFluidRows = modelCategory.getElementsByClassName("card-container")[0];
+let htmlContent1 = "";
+for (let i = 0; i < restaurants.length; i++) {
+  htmlContent1 += `
+<div class="card">
+<div class="restaurant-card">
+       <div class="image-container">
+                    <img id="food_img"
+                       src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${restaurants[i].info.cloudinaryImageId}"  alt="...">
+                    <div class="discount-badge">20% OFF UPTO ₹50</div>
+                </div>
+                <h3 class="restaurant-name" id="restaurant-name">${restaurants[i].info.name}</h3>
+                <div class="info-container">
+                    <div class="info-row">
+                        <div class="rating">
+                            <span class="rating-star icons"><i class="bi bi-star-fill star"></i></span>
+                            <span class="review-count" id="review_count">${restaurants[i].info.avgRating}</span>
+                        </div>
+                        <div class="delivery-info" id="delivery_info">
+                            <i class="bi bi-dot"></i>${restaurants[i].info.sla.slaString}
+                        </div>
+                    </div>
+                    <p id="info_para">${restaurants[i].info.cuisines.join(", ")}</p>
+                    <p id="location"><span class="icons location-icon"><i class="bi bi-geo-alt-fill"></i></span>${restaurants[i].info.locality}</p>
+                </div>
+  </div>
+</div>`;
+}
+containerFluidRows.innerHTML = htmlContent1;
 
-  let restaurantsindex =  restaurants[4]
-  let restaurant_name = document.getElementById("restaurant-name");
-  console.log(restaurant_name);
-  let review_count = document.getElementById("review_count");
-  let delivery_info = document.getElementById("delivery_info");
-let info_para=document.getElementById("info_para")
-console.log(info_para);
-let food_img=document.getElementById("food_img");
-console.log(food_img);
-let location=document.getElementById("location");
-  restaurant_name.textContent = restaurantsindex.info.name;
-  review_count.textContent = restaurantsindex.info.avgRating;
-  delivery_info.textContent = restaurantsindex.info.sla.slaString;
- info_para.innerText=restaurantsindex.info.cuisines.join(", ");
- location.insertAdjacentHTML("beforeend", restaurantsindex.info.locality);
-let imgSrc = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${restaurantsindex.info.cloudinaryImageId}`;
+// document.addEventListener("DOMContentLoaded", function () {
+//   let restaurantsindex = restaurants[4];
+//   let restaurant_name = document.getElementById("restaurant-name");
 
-food_img.src=imgSrc
+//   let review_count = document.getElementById("review_count");
+//   let delivery_info = document.getElementById("delivery_info");
+//   let info_para = document.getElementById("info_para");
 
-// location.textContent=restaurantsindex.info.locality;
+//   let food_img = document.getElementById("food_img");
+//   let location = document.getElementById("location");
+//   restaurant_name.textContent = restaurantsindex.info.name;
+//   review_count.textContent = restaurantsindex.info.avgRating;
+//   delivery_info.textContent = restaurantsindex.info.sla.slaString;
+//   info_para.innerText = restaurantsindex.info.cuisines.join(", ");
+//   location.insertAdjacentHTML("beforeend", restaurantsindex.info.locality);
+  // let imgSrc = `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${restaurantsindex.info.cloudinaryImageId}`;
 
-});
+//   food_img.src = imgSrc;
+
+//   // location.textContent=restaurantsindex.info.locality;
+// });
