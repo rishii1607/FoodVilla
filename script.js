@@ -843,14 +843,39 @@ let restaurants = [
   },
 ];
 
+let card = document.getElementById("class");
+let search_bar = document.getElementById("search_bar");
+let input_item = document.getElementById("input_item");
+let restaurant_card = document.getElementById("restaurant-card");
+let filterFood = restaurants;
+
 let modelCategory = document.getElementById("category");
 const containerFluidRows =
   modelCategory.getElementsByClassName("card-container")[0];
+
 let htmlContent1 = "";
-for (const element of restaurants) {
-  htmlContent1 += `
-<div class="card">
-<div class="restaurant-card">
+
+let htmlContent2 = "";
+
+input_item.addEventListener("keyup", function () {
+  console.log(input_item.value);
+  let lowers = input_item.value.toLowerCase();
+
+  filterFood = restaurants.filter((food) =>
+    food.info.name.toLowerCase().includes(lowers)
+  );
+
+  getFood(htmlContent2);
+  console.log(filterFood);
+});
+
+console.log(filterFood);
+
+function getFood(foodItem) {
+  for (const element of filterFood) {
+    foodItem += `
+<div class="card" id="card">
+<div class="restaurant-card" id="restaurant-card">
        <div class="image-container">
                     <img id="food_img"
                        src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${
@@ -861,10 +886,10 @@ for (const element of restaurants) {
                         ? element?.info?.aggregatedDiscountInfoV3?.header
                         : "20% OFF"
                     } ${
-    element?.info?.aggregatedDiscountInfoV3?.subHeader
-      ? element?.info?.aggregatedDiscountInfoV3?.subHeader
-      : " UPTO ₹50"
-  }</div>
+      element?.info?.aggregatedDiscountInfoV3?.subHeader
+        ? element?.info?.aggregatedDiscountInfoV3?.subHeader
+        : " UPTO ₹50"
+    }</div>
                 </div>
                 <h3 class="restaurant-name" id="restaurant-name">${
                   element.info.name
@@ -890,5 +915,8 @@ for (const element of restaurants) {
                 </div>
   </div>
 </div>`;
+  }
+  containerFluidRows.innerHTML = foodItem;
 }
-containerFluidRows.innerHTML = htmlContent1;
+
+getFood(htmlContent1);
