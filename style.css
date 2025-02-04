@@ -6,8 +6,17 @@
   padding: 0;
   box-sizing: border-box;
 }
+body {
+  font-family: "Arial", sans-serif;
+  background: #000;
+  color: #fff;
+}
 .container {
   margin-top: 20px;
+}
+a {
+  text-decoration: none;
+  color: #fff;
 }
 #input_item {
   background-color: rgb(38, 48, 60);
@@ -20,14 +29,7 @@
   color: rgb(121, 184, 255);
   font-size: 26px;
 }
-.bi {
-  margin-left: -25px;
-}
 
-body {
-  background: #000;
-  color: #fff;
-}
 #search_item {
   display: flex;
   align-items: center;
@@ -51,7 +53,6 @@ body {
   transition: transform 0.3s ease-in-out;
   font-family: "Arial", sans-serif;
   background: transparent;
-  
 }
 
 .restaurant-card:hover {
@@ -134,7 +135,6 @@ body {
 }
 
 .delivery-info {
-  /* display: flex; */
   font-size: 18px;
   align-items: center;
 }
@@ -252,4 +252,72 @@ body {
   .container {
     max-width: 1320px;
   }
+}
+
+.menu-card {
+  height: 1000px;
+  padding: 70px 0;
+}
+
+.menu-container {
+  display: flex;
+  gap: 50px;
+  flex-direction: column;
+}
+
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+  padding: 10px 30px;
+  display: inline-block;
+  border: 3px solid white;
+  color: white;
+}
+
+.menu-container ul {
+  padding: 0;
+  list-style: none;
+  width: 90%;
+  max-width: 900px;
+  margin: 0px auto;
+}
+p {
+  margin: 5px;
+}
+.foodItem-list li {
+  display: flex;
+  padding: 0px 0 10px;
+}
+.menu-name {
+  flex: 0 0 auto;
+  font-weight: 500;
+  font-size: 18px;
+}
+.dots {
+  border-bottom: 1px dotted #fff;
+  margin-bottom: 7px;
+  flex: 1 1 50%;
+}
+.menu-price {
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.res-img {
+  width: 280px;
+  height: 180px;
+  display: block;
+  border-radius: 6px;
+  object-fit: cover;
+  image-rendering: pixelated;
+  margin-bottom: 12px;
+}
+
+.foodItem-list {
+  display: flex;
+  gap: 50px;
+}
+.foodItem-list h2 {
+  font-size: 22px;
+  margin-bottom: 16px;
 }
